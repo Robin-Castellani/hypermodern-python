@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hypermodern-python"
+version = "0.1.0"
+description = "Learn some modern Python tools..."
+authors = ["robin-castellani <robin.castellani@alumni.unitn.it>"]
+license = "GPLv3"
+readme = "README.md"
+homepage = "https://github.com/robin-castellani/hypermodern-python"
+repository = "https://github.com/robin-castellani/hypermodern-python"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
