@@ -1,0 +1,5 @@
+# PyCharm stuff
+.idea
+
+# pyenv
+.python-version
