@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "hypermodern-python"
+name = "my-hypermodern-python"
 version = "0.1.0"
 description = "Learn some modern Python tools..."
 authors = ["robin-castellani <robin.castellani@alumni.unitn.it>"]
 license = "GPLv3"
 readme = "README.md"
-homepage = "https://github.com/robin-castellani/hypermodern-python"
-repository = "https://github.com/robin-castellani/hypermodern-python"
+homepage = "https://github.com/robin-castellani/my-hypermodern-python"
+repository = "https://github.com/robin-castellani/my-hypermodern-python"
 
 [tool.poetry.dependencies]
 python = "^3.7"
