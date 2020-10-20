@@ -14,6 +14,7 @@ click = "^7.1.2"
 requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.1.1"
 
 [tool.poetry.scripts]
 my-hypermodern-python = "my_hypermodern_python.console:main"
