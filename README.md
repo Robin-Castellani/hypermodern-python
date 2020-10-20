@@ -11,7 +11,7 @@ To configure and run it, run these commands into the shell
 (assuming you have installed at least Python 3.7 and 
 [Poetry](https://python-poetry.org/docs/)):
 
-```
+```shell script
 # checkout the repository (the example is via SSH)
 git clone git@github.com:Robin-Castellani/my-hypermodern-python.git
 cd my-hypermodern-python
@@ -21,4 +21,21 @@ poetry install
 
 # run it
 poetry run my-hypermodern-python
+```
+
+## 🛠 Test suite
+A small test suite has been implemented with 
+[Pytest](https://docs.pytest.org/en/stable/).
+You can run them 
+(along with the [Coverage](https://coverage.readthedocs.io/))
+with the command
+
+```shell script
+poetry run pytest --cov
+```
+
+Also, it is possible to run tests in multiple Python environment 
+(now 3.7 and 3.8) using [Nox](https://nox.thea.codes/en/stable/) with
+```shell script
+nox
 ```
