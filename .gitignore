@@ -6,3 +6,6 @@
 
 # coverage
 .coverage
+
+# pytest
+.pytest_cache
