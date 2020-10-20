@@ -8,7 +8,6 @@ import textwrap
 import locale
 
 import click
-import requests
 
 from . import __version__, wikipedia
 
@@ -16,14 +15,17 @@ from . import __version__, wikipedia
 @click.command()
 @click.version_option(version=__version__)
 @click.option(
-    '--lang', default=locale.getdefaultlocale()[0].split('_')[0],
-    help='Which language do you want?'
+    '--lang', '-l',
+    default=locale.getdefaultlocale()[0].split('_')[0], show_default=True,
+    help='Which language do you want?',
+    metavar='LANG',
 )
 def main(lang):
     """
     Get a random fact from the Wikipedia API
     """
-    data = wikipedia.random_page(lang)
+    # import pdb;pdb.set_trace()
+    data = wikipedia.random_page(lang=lang)
 
     title = data['title']
     extract = data['extract']
