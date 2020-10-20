@@ -39,3 +39,7 @@ Also, it is possible to run tests in multiple Python environment
 ```shell script
 nox
 ```
+These two custom options are available for `nox`, to be added after `--`:
+- `--cov` to get the code coverage of the test suite;
+- `-m e2e` or `-m "not e2e"` to perform the test only on or to avoid
+  the end to end tests.
