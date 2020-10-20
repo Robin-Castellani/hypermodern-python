@@ -28,3 +28,19 @@ def mock_requests_get(mocker):
 def test_main_succeeds(runner, mock_requests_get):
     result = runner.invoke(console.main)
     assert result.exit_code == 0
+
+
+def test_main_prints_title(runner, mock_requests_get):
+    result = runner.invoke(console.main)
+    # in the terminal output the title is the first line
+    output_title = result.output.split('\n')[0]
+    assert output_title == 'Lorem Ipsum'
+
+
+def test_main_prints_extract(runner, mock_requests_get):
+    result = runner.invoke(console.main)
+    # in the terminal output the extract consists of all lines
+    #  but the first one
+    output_extract = result.output.split('\n')[1:-1]
+    string_extract = ' '.join(output_extract)
+    assert string_extract == 'Lorem ipsum dolor sit amet'
