@@ -1,5 +1,7 @@
 """
-The hypermodern Python project
+The hypermodern Python project.
+
+Print the a random fact using the Wikipedia API.
 """
 
 import textwrap
@@ -8,7 +10,7 @@ import locale
 import click
 import requests
 
-from . import __version__
+from . import __version__, wikipedia
 
 
 @click.command()
@@ -21,20 +23,7 @@ def main(lang):
     """
     Get a random fact from the Wikipedia API
     """
-    api_url = f'https://{lang}.wikipedia.org/api/rest_v1/page/random/summary'
-
-    try:
-        with requests.get(api_url) as response:
-            response.raise_for_status()  # if bad status, raises exception
-            data = response.json()  # the API provide its data in json
-    except requests.HTTPError:
-        raise click.ClickException(
-            f'Wikipedia API not reachable OR given language "{lang}" not valid'
-        )
-    except requests.exceptions.ConnectionError:
-        raise click.ClickException(
-            f'Given language "{lang}" not valid'
-        )
+    data = wikipedia.random_page(lang)
 
     title = data['title']
     extract = data['extract']
