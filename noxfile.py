@@ -29,3 +29,13 @@ def lint(session):
     session.install("flake8")
     # run Flake8
     session.run("flake8", *args)
+
+
+@nox.session(python="3.8")
+def black(session):
+    # get the positional arguments from the CLI or defaults to locations
+    args = session.posargs or locations
+    # install Black via pip
+    session.install("black")
+    # run Black
+    session.run("black", *args)
