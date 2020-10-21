@@ -11,6 +11,19 @@ import nox
 nox.options.sessions = "lint", "safety", "test"
 
 
+def install_with_constraints(session, *args, **kwargs):
+    with tempfile.NamedTemporaryFile() as requirements:
+        session.run(
+            "poetry",
+            "export",
+            "--dev",
+            "--format=requirements.txt"
+            f"--output={requirements.name}",
+            external=True
+        )
+        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+
+
 @nox.session(python=["3.8", "3.7"])
 def test(session):
     # get the positional arguments form the CLI
@@ -18,7 +31,10 @@ def test(session):
     args = session.posargs or ["--cov"]
     # install dependencies
     # poetry is not part of the environment
-    session.run("poetry", "install", external=True)
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_with_constraints(
+        session, "coverage[toml]", "pytest", "pytest-cov", "pytest-mock"
+    )
     # run the tests
     session.run("pytest", *args)
 
@@ -36,7 +52,8 @@ def lint(session):
     # add check for import statements order
     # add bugbear check
     # all of them via pip
-    session.install(
+    install_with_constraints(
+        session,
         "flake8",
         "flake8-bandit",
         "flake8-black",
@@ -52,7 +69,7 @@ def black(session):
     # get the positional arguments from the CLI or defaults to locations
     args = session.posargs or locations
     # install Black via pip
-    session.install("black")
+    install_with_constraints(session, "black")
     # run Black
     session.run("black", *args)
 
@@ -72,6 +89,6 @@ def safety(session):
             external=True
         )
         # install Safety via pip
-        session.install("safety")
+        install_with_constraints(session, "safety")
         # run Safety
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
