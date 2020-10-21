@@ -2,11 +2,13 @@
 Nox configuration file.
 """
 
+import tempfile
+
 import nox
 
 
 # exclude the black session by default
-nox.options.sessions = "lint", "test"
+nox.options.sessions = "lint", "safety", "test"
 
 
 @nox.session(python=["3.8", "3.7"])
@@ -53,3 +55,23 @@ def black(session):
     session.install("black")
     # run Black
     session.run("black", *args)
+
+
+@nox.session(python="3.8")
+def safety(session):
+    # open a temporary file
+    with tempfile.NamedTemporaryFile() as requirements:
+        # convert the poetry .lock file to requirements.txt
+        session.run(
+            "poetry",
+            "export",
+            "--dev",
+            "--format=requirements.txt",
+            "--without-hashes",
+            f"--output={requirements.name}",
+            external=True
+        )
+        # install Safety via pip
+        session.install("safety")
+        # run Safety
+        session.run("safety", "check", f"--file={requirements.name}", "--full-report")
