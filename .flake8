@@ -1,3 +1,14 @@
 [flake8]
-select = BLK,C,E,F,W
+# errors to be displayed
+# BLK for Black-would-change
+# C for complexity errors
+# E for errors according to PEP8
+# W for warning according to PEP8
+# F for errors in Python files
+select = BLK,C,E,F,W,I
+# the max complexity level according to McCabe
 max-complexity = 10
+# which modules are to be considered as local
+application-import-names = my_hypermodern_python,tests
+# which import order to use
+import-order-style = google

@@ -29,8 +29,11 @@ locations = "src", "tests", "noxfile.py"
 def lint(session):
     # get the positional arguments from the CLI or defaults to locations
     args = session.posargs or locations
-    # add Flake8 and check if Black would change the code via pip
-    session.install("flake8", "flake8-black")
+    # add Flake8 to lint
+    # add check if Black would change the code
+    # add check for import statements order
+    # all of them via pip
+    session.install("flake8", "flake8-black", "flake8-import-order")
     # run Flake8
     session.run("flake8", *args)
 
