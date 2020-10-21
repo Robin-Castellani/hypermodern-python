@@ -19,8 +19,7 @@ def random_page(lang):
         )
     except requests.exceptions.ConnectionError:
         raise click.ClickException(
-            f'No connection to get "{api_url}" OR '
-            f'given language "{lang}" not valid'
+            f'No connection to get "{api_url}" OR given language "{lang}" not valid'
         )
     except requests.RequestException as error:
         message = str(error)

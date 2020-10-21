@@ -36,6 +36,3 @@ source = ['my_hypermodern_python']
 [tool.coverage.report]
 show_missing = true
 #fail_under = 100
-
-[tool.black]
-line-length = 80
