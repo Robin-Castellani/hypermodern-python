@@ -34,7 +34,13 @@ def lint(session):
     # add check for import statements order
     # add bugbear check
     # all of them via pip
-    session.install("flake8", "flake8-black", "flake8-bugbear", "flake8-import-order")
+    session.install(
+        "flake8",
+        "flake8-bandit",
+        "flake8-black",
+        "flake8-bugbear",
+        "flake8-import-order",
+    )
     # run Flake8
     session.run("flake8", *args)
 

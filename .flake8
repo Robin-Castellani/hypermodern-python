@@ -7,7 +7,8 @@
 # E for errors according to PEP8
 # W for warning according to PEP8
 # F for errors in Python files
-select = B,B9,BLK,C,E,F,W,I
+# S for security errors
+select = B,B9,BLK,C,E,F,W,I,S
 # ignore the max line error with a 10% tolerance
 ignore = E501
 max-line-length=80
@@ -17,3 +18,5 @@ max-complexity = 10
 application-import-names = my_hypermodern_python,tests
 # which import order to use
 import-order-style = google
+# ignores assert removal in the test suite
+per-file-ignores = tests/*:S101
