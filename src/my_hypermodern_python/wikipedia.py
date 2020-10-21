@@ -7,7 +7,7 @@ import click
 
 
 def random_page(lang):
-    api_url = f'https://{lang}.wikipedia.org/api/rest_v1/page/random/summary'
+    api_url = f"https://{lang}.wikipedia.org/api/rest_v1/page/random/summary"
 
     try:
         with requests.get(api_url) as response:
