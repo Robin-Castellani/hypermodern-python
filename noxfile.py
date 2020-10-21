@@ -5,6 +5,10 @@ Nox configuration file.
 import nox
 
 
+# exclude the black session by default
+nox.options.sessions = "lint", "test"
+
+
 @nox.session(python=["3.8", "3.7"])
 def test(session):
     # get the positional arguments form the CLI
@@ -25,8 +29,8 @@ locations = "src", "tests", "noxfile.py"
 def lint(session):
     # get the positional arguments from the CLI or defaults to locations
     args = session.posargs or locations
-    # add Flake8 via pip
-    session.install("flake8")
+    # add Flake8 and check if Black would change the code via pip
+    session.install("flake8", "flake8-black")
     # run Flake8
     session.run("flake8", *args)
 
