@@ -1,11 +1,16 @@
 [flake8]
 # errors to be displayed
+# B for bugbear errors
+# B9 for opinionated bugbear errors
 # BLK for Black-would-change
 # C for complexity errors
 # E for errors according to PEP8
 # W for warning according to PEP8
 # F for errors in Python files
-select = BLK,C,E,F,W,I
+select = B,B9,BLK,C,E,F,W,I
+# ignore the max line error with a 10% tolerance
+ignore = E501
+max-line-length=80
 # the max complexity level according to McCabe
 max-complexity = 10
 # which modules are to be considered as local
