@@ -1,14 +1,14 @@
 # 🆙 Hypermodern Python
 Improving the way I live Python...
 
-This repository follows the tutorial from 
+This repository follows the tutorial from
 [Claudio Jolowicz](https://cjolowicz.github.io/posts/hypermodern-python-01-setup/).
 
-## ❔ What it is... 
+## ❔ What it is...
 Get some random facts from the Wikipedia API and print them to the CLI.
 
-To configure and run it, run these commands into the shell 
-(assuming you have installed at least Python 3.7 and 
+To configure and run it, run these commands into the shell
+(assuming you have installed at least Python 3.7 and
 [Poetry](https://python-poetry.org/docs/)):
 
 ```shell script
@@ -24,9 +24,9 @@ poetry run my-hypermodern-python
 ```
 
 ## 🛠 Test suite
-A small test suite has been implemented with 
+A small test suite has been implemented with
 [Pytest](https://docs.pytest.org/en/stable/).
-You can run them 
+You can run them
 (along with the [Coverage](https://coverage.readthedocs.io/))
 with the command
 
@@ -34,7 +34,7 @@ with the command
 poetry run pytest --cov
 ```
 
-Also, it is possible to run tests in multiple Python environment 
+Also, it is possible to run tests in multiple Python environment
 (now 3.7 and 3.8) using [Nox](https://nox.thea.codes/en/stable/) with
 ```shell script
 nox

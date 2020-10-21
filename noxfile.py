@@ -17,9 +17,8 @@ def install_with_constraints(session, *args, **kwargs):
             "poetry",
             "export",
             "--dev",
-            "--format=requirements.txt"
-            f"--output={requirements.name}",
-            external=True
+            "--format=requirements.txt" f"--output={requirements.name}",
+            external=True,
         )
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
@@ -86,7 +85,7 @@ def safety(session):
             "--format=requirements.txt",
             "--without-hashes",
             f"--output={requirements.name}",
-            external=True
+            external=True,
         )
         # install Safety via pip
         install_with_constraints(session, "safety")
