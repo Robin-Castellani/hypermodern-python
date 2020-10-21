@@ -2,8 +2,8 @@
 Get data from the Wikipedi API.
 """
 
-import requests
 import click
+import requests
 
 
 def random_page(lang):

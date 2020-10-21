@@ -4,8 +4,8 @@ The hypermodern Python project.
 Print the a random fact using the Wikipedia API.
 """
 
-import textwrap
 import locale
+import textwrap
 
 import click
 
