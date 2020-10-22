@@ -18,6 +18,7 @@ def install_with_constraints(session, *args, **kwargs):
             "export",
             "--dev",
             "--format=requirements.txt",
+            "--without-hashes",
             f"--output={requirements.name}",
             external=True,
         )
@@ -101,7 +102,7 @@ def mypy(session):
     session.run("mypy", *args)
 
 
-@nox.session(python="3.7")
+@nox.session(python=["3.7", "3.8"])
 def pytype(session):
     args = session.posargs or ["--disable=import-error", *locations]
     install_with_constraints(session, "pytype")
