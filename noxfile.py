@@ -8,7 +8,7 @@ import nox
 
 
 # exclude the black session by default
-nox.options.sessions = "lint", "safety", "mypy", "test"
+nox.options.sessions = "lint", "safety", "mypy", "pytype", "test"
 
 
 def install_with_constraints(session, *args, **kwargs):
@@ -99,3 +99,10 @@ def mypy(session):
     args = session.posargs or locations
     install_with_constraints(session, "mypy")
     session.run("mypy", *args)
+
+
+@nox.session(python="3.7")
+def pytype(session):
+    args = session.posargs or ["--disable=import-error", *locations]
+    install_with_constraints(session, "pytype")
+    session.run("pytype", *args)
