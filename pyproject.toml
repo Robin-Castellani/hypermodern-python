@@ -25,6 +25,7 @@ flake8-black = "^0.2.1"
 flake8-bugbear = "^20.1.4"
 flake8-import-order = "^0.18.1"
 mypy = "^0.790"
+pytype = {version = "^2020.10.8", python = "3.7"}
 
 [tool.poetry.scripts]
 my-hypermodern-python = "my_hypermodern_python.console:main"
