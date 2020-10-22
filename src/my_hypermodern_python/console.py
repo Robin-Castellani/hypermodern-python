@@ -22,7 +22,7 @@ from . import __version__, wikipedia
     help="Which language do you want?",
     metavar="LANG",
 )
-def main(lang):
+def main(lang: str) -> None:
     """
     Get a random fact from the Wikipedia API
     """

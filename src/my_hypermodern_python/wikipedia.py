@@ -2,11 +2,13 @@
 Get data from the Wikipedi API.
 """
 
+from typing import Any
+
 import click
 import requests
 
 
-def random_page(lang):
+def random_page(lang: str) -> Any:
     api_url = f"https://{lang}.wikipedia.org/api/rest_v1/page/random/summary"
 
     try:
