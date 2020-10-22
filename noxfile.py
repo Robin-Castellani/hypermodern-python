@@ -8,7 +8,7 @@ import nox
 
 
 # exclude the black session by default
-nox.options.sessions = "lint", "safety", "test"
+nox.options.sessions = "lint", "safety", "mypy", "test"
 
 
 def install_with_constraints(session, *args, **kwargs):
@@ -17,7 +17,8 @@ def install_with_constraints(session, *args, **kwargs):
             "poetry",
             "export",
             "--dev",
-            "--format=requirements.txt" f"--output={requirements.name}",
+            "--format=requirements.txt",
+            f"--output={requirements.name}",
             external=True,
         )
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
@@ -91,3 +92,10 @@ def safety(session):
         install_with_constraints(session, "safety")
         # run Safety
         session.run("safety", "check", f"--file={requirements.name}", "--full-report")
+
+
+@nox.session(python=["3.7", "3.8"])
+def mypy(session):
+    args = session.posargs or locations
+    install_with_constraints(session, "mypy")
+    session.run("mypy", *args)
