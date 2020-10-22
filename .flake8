@@ -21,5 +21,4 @@ application-import-names = my_hypermodern_python,tests
 # which import order to use
 import-order-style = google
 # ignores assert removal in the test suite
-per-file-ignores =
-    tests/*:S101,ANN
+per-file-ignores = tests/*:S101
