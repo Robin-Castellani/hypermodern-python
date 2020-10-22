@@ -27,10 +27,7 @@ def main(lang: str) -> None:
     Get a random fact from the Wikipedia API
     """
     # import pdb;pdb.set_trace()
-    data = wikipedia.random_page(lang=lang)
+    page = wikipedia.random_page(lang=lang)
 
-    title = data["title"]
-    extract = data["extract"]
-
-    click.secho(title, fg="green")
-    click.echo(textwrap.fill(extract))
+    click.secho(page.title, fg="green")
+    click.echo(textwrap.fill(page.extract))
