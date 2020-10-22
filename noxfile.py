@@ -9,6 +9,10 @@ import nox
 
 # exclude the black session by default
 nox.options.sessions = "lint", "safety", "mypy", "pytype", "test"
+# path to be linted with Flake8
+locations = "src", "tests", "noxfile.py"
+# package to be analysed with Typeguard
+package = "my_hypermodern_python"
 
 
 def install_with_constraints(session, *args, **kwargs):
@@ -38,10 +42,6 @@ def test(session):
     )
     # run the tests
     session.run("pytest", *args)
-
-
-# path to be linted with Flake8
-locations = "src", "tests", "noxfile.py"
 
 
 @nox.session(python=["3.8", "3.7"])
@@ -107,3 +107,14 @@ def pytype(session):
     args = session.posargs or ["--disable=import-error", *locations]
     install_with_constraints(session, "pytype")
     session.run("pytype", *args)
+
+
+@nox.session(python=["3.8", "3.7"])
+def typeguard(session):
+    # exclude ent-to-end tests by default
+    args = session.posargs or ["-m", "not e2e"]
+    # install package dependencies
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_with_constraints(session, "pytest", "pytest-mock", "typeguard")
+    # run typeguard as a pytest plugin
+    session.run("pytest", f"--typeguard-packages={package}", *args)
