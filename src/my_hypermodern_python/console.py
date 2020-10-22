@@ -4,7 +4,7 @@ The hypermodern Python project.
 Print the a random fact using the Wikipedia API.
 """
 
-import locale
+# import locale
 import textwrap
 
 import click
@@ -17,7 +17,7 @@ from . import __version__, wikipedia
 @click.option(
     "--lang",
     "-l",
-    default=locale.getdefaultlocale()[0].split("_")[0],
+    default="en",  # locale.getdefaultlocale()[0].split("_")[0],
     show_default=True,
     help="Which language do you want?",
     metavar="LANG",
