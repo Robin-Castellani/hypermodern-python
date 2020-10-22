@@ -12,3 +12,6 @@
 
 # Python cache
 __pycache__
+
+# pytype generated files
+.pytype
