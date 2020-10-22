@@ -23,4 +23,3 @@ import-order-style = google
 # ignores assert removal in the test suite
 per-file-ignores =
     tests/*:S101,ANN
-    noxfile.py:ANN
