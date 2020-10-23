@@ -6,6 +6,7 @@
 # BLK for Black-would-change
 # C for complexity errors
 # D for docstring warnings
+# DAR for darglint warnings
 # E for errors according to PEP8
 # F for errors in Python files
 # I for import warnings
