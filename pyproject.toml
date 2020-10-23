@@ -31,6 +31,7 @@ pytype = {version = "^2020.10.8", python = "3.7"}
 typeguard = "^2.10.0"
 flake8-annotations = "^2.4.1"
 flake8-docstrings = "^1.5.0"
+darglint = "^1.5.5"
 
 [tool.poetry.scripts]
 my-hypermodern-python = "my_hypermodern_python.console:main"
