@@ -6,6 +6,7 @@ My Hypermodern Python Project
     :maxdepth: 1
 
     license
+    reference
 
 The project following the
 `Hypermodern Python <https://cjolowicz.github.io/posts>`_
