@@ -39,6 +39,12 @@ def random_page(lang: str = "en") -> Page:
     Raises:
         ClickException: The HTTP request failed or the HTTP response
             contained an invalid body.
+
+    Example:
+        >>> from my_hypermodern_python import wikipedia
+        >>> page = wikipedia.random_page(lang="en")
+        >>> bool(page.title)
+        True
     """
     api_url = f"https://{lang}.wikipedia.org/api/rest_v1/page/random/summary"
 
