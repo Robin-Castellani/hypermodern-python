@@ -1,6 +1,4 @@
-"""
-Get data from the Wikipedia REST API, version 1.
-"""
+"""Get data from the Wikipedia REST API, version 1."""
 
 from dataclasses import dataclass
 
@@ -27,7 +25,7 @@ schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 
 
 def random_page(lang: str = "en") -> Page:
-    """Return random page
+    """Return random page.
 
     Performs a GET request to the /page/random/summary endpoint.
 

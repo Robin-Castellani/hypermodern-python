@@ -1,5 +1,4 @@
-"""
-The hypermodern Python project.
+"""The hypermodern Python project.
 
 Print the a random fact using the Wikipedia API.
 """
@@ -23,9 +22,7 @@ from . import __version__, wikipedia
     metavar="LANG",
 )
 def main(lang: str) -> None:
-    """
-    Get a random fact from the Wikipedia API
-    """
+    """Get a random fact from the Wikipedia API."""
     # import pdb;pdb.set_trace()
     page = wikipedia.random_page(lang=lang)
 

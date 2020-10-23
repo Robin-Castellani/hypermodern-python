@@ -5,12 +5,13 @@
 # B9 for opinionated bugbear errors
 # BLK for Black-would-change
 # C for complexity errors
+# D for docstring warnings
 # E for errors according to PEP8
 # F for errors in Python files
 # I for import warnings
 # S for security errors
 # W for warning according to PEP8
-select = ANN,B,B9,BLK,C,E,F,I,S,W
+select = ANN,B,B9,BLK,C,D,E,F,I,S,W
 # ignore the max line error with a 10% tolerance
 ignore = E501
 max-line-length=80
@@ -21,4 +22,8 @@ application-import-names = my_hypermodern_python,tests
 # which import order to use
 import-order-style = google
 # ignores assert removal in the test suite
-per-file-ignores = tests/*:S101
+per-file-ignores =
+    tests/*:S101
+    __init__.py:D104
+# set the docstrings style
+docstring-convention = google
