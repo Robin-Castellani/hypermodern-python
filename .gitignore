@@ -15,3 +15,6 @@ __pycache__
 
 # pytype generated files
 .pytype
+
+# sphinx output
+docs/_build
