@@ -41,9 +41,13 @@ nox
 ```
 Nox runs many sessions (by default `lint`, `safety`, `mypy`, `pytype`,
 `test` and `typeguard`); here are the available sessions:
-- `lint` to lint the code, check whether annotations are present,
-  check for security issues, check for wrong import order and check
-  whether black would change the code;
+- `lint` to lint the code,
+  check whether annotations are present,
+  check for security issues,
+  check for wrong import order,
+  check whether docstrings are present,
+  check the correctness of docstring,
+  and check whether black would change the code;
 - `safety` to check whether third-part packages have security issues;
 - `mypy` and `pytype` to statically check types;
 - `test` to run the test suite with the coverage;
