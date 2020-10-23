@@ -10,7 +10,7 @@ from nox.sessions import Session
 # exclude the black session by default
 nox.options.sessions = "lint", "safety", "mypy", "pytype", "test", "typeguard"
 # path to be linted with Flake8
-locations = "src", "tests", "noxfile.py"
+locations = "src", "tests", "noxfile.py", "docs/conf.py"
 # package to be analysed with Typeguard
 package = "my_hypermodern_python"
 
@@ -80,6 +80,13 @@ def black(session: Session) -> None:
     install_with_constraints(session, "black")
     # run Black
     session.run("black", *args)
+
+
+@nox.session(python="3.8")
+def docs(session: Session) -> None:
+    """Build the documentation."""
+    install_with_constraints(session, "sphinx")
+    session.run("sphinx-build", "docs", "docs/_build")
 
 
 @nox.session(python="3.8")
