@@ -1,5 +1,5 @@
 """
-Get data from the Wikipedi API.
+Get data from the Wikipedia REST API, version 1.
 """
 
 from dataclasses import dataclass
@@ -12,6 +12,13 @@ import requests
 
 @dataclass
 class Page:
+    """Page resource.
+
+    Attributes:
+        title: The title of the Wikipedia page.
+        extract: A plain text summary.
+    """
+
     title: str
     extract: str
 
@@ -20,6 +27,21 @@ schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 
 
 def random_page(lang: str = "en") -> Page:
+    """Return random page
+
+    Performs a GET request to the /page/random/summary endpoint.
+
+    Args:
+        language: the Wikipedia language edition.
+            By default, the English Wikipedia is used ("en").
+
+    Returns:
+        A page resource.
+
+    Raises:
+        ClickException: The HTTP request failed or the HTTP response
+            contained an invalid body.
+    """
     api_url = f"https://{lang}.wikipedia.org/api/rest_v1/page/random/summary"
 
     try:
