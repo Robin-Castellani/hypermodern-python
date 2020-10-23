@@ -39,6 +39,27 @@ Also, it is possible to run tests in multiple Python environment
 ```shell script
 nox
 ```
+Nox runs many sessions (by default `lint`, `safety`, `mypy`, `pytype`,
+`test` and `typeguard`); here are the available sessions:
+- `lint` to lint the code, check whether annotations are present,
+  check for security issues, check for wrong import order and check
+  whether black would change the code;
+- `safety` to check whether third-part packages have security issues;
+- `mypy` and `pytype` to statically check types;
+- `test` to run the test suite with the coverage;
+- `typeguard` to check types at runtime with `pytest`;
+- `black` to restyle the code.
+
+To run a single session, use
+```shell script
+nox -s <session-name>
+```
+
+To speed up the following Nox sessions, reuse the existing virtual envs:
+```shell script
+nox -rs <session-name>
+```
+
 These two custom options are available for `nox`, to be added after `--`:
 - `--cov` to get the code coverage of the test suite;
 - `-m e2e` or `-m "not e2e"` to perform the test only on or to avoid

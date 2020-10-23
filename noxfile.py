@@ -10,7 +10,7 @@ from nox.sessions import Session
 
 
 # exclude the black session by default
-nox.options.sessions = "lint", "safety", "mypy", "pytype", "test"
+nox.options.sessions = "lint", "safety", "mypy", "pytype", "test", "typeguard"
 # path to be linted with Flake8
 locations = "src", "tests", "noxfile.py"
 # package to be analysed with Typeguard
