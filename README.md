@@ -52,7 +52,9 @@ Nox runs many sessions (by default `lint`, `safety`, `mypy`, `pytype`,
 - `mypy` and `pytype` to statically check types;
 - `test` to run the test suite with the coverage;
 - `typeguard` to check types at runtime with `pytest`;
-- `black` to restyle the code.
+- `black` to restyle the code;
+- `docs` to build documentation from docstrings using Sphinx;
+- `xdoctest` to test the examples in the documentation.
 
 To run a single session, use
 ```shell script
